@@ -1,4 +1,5 @@
 # TapGo Backend Services
+
 ## Commit Rules
 
 **Format :** `<type>(<scope>): <subject>`
@@ -31,17 +32,20 @@ More Examples:
 | |
 
 ## Fitur yang tersedia
-| Fitur | Deskripsi |
-|-----------|-----------------------------------------------------------------------------------------------|
-| `auth` | Authentikasi menggunakan access token |
-| `category` | --- |
-| `Business Domain` | Tempat para UMKM membuat profile usaha mereka  |
-||
+
+| Fitur             | Deskripsi                                     |
+| ----------------- | --------------------------------------------- |
+| `auth`            | Authentikasi menggunakan access token         |
+| `category`        | ---                                           |
+| `Business Domain` | Tempat para UMKM membuat profile usaha mereka |
+|                   |
 
 ## Layanan Eksternal
+
 - Untuk saat ini fitur penyimpanan gambar dilakukan dengan bantuan supabase storage.
 
 ## Target Fitur
+
 deadline: 4 september 2025
 | Fitur | Deskripsi |
 |-----------|-----------------------------------------------------------------------------------------------|
