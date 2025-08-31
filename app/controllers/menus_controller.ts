@@ -30,7 +30,7 @@ export default class MenusController {
     }
   }
 
-  public async getMenyByName({ response, request }: HttpContext) {
+  public async getMenuByName({ response, request }: HttpContext) {
     try {
       const { name } = request.only(['name'])
       const menu = await this.menuService.findByName(name)
