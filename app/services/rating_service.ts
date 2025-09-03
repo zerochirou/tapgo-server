@@ -17,6 +17,7 @@ export class RatingService {
   }
 
   public async createRating(payload: CreateRating) {
+    // POTENTIAL WARN
     if (payload.rating <= 5) {
       return await Rating.create({
         userName: payload.username,
