@@ -38,6 +38,7 @@ More Examples:
 | `auth`            | Authentikasi menggunakan access token         |
 | `category`        | ---                                           |
 | `Business Domain` | Tempat para UMKM membuat profile usaha mereka |
+| `rating`          | Fitur permberian rating                       |
 |                   |
 
 ## Layanan Eksternal
@@ -49,7 +50,6 @@ More Examples:
 deadline: 4 september 2025
 | Fitur | Deskripsi |
 |-----------|-----------------------------------------------------------------------------------------------|
-| `rating` | Fitur permberian rating |
 | `mitra` | Fitur agar dapat terkoneksi ke layanan seperti Gofod, Shopee Food, Kurir, dll |
 | `SEO` | Tempat para UMKM membuat profile usaha mereka `deadline: 20 september 2025` |
 | `Secure System` | Pengetesan keamanan seperti ddos, dll...`deadline: 20 september 2025` |
