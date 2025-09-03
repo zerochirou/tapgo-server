@@ -18,14 +18,15 @@ export class RatingService {
 
   public async createRating(payload: CreateRating) {
     // POTENTIAL WARN
-    if (payload.rating <= 5) {
+    const maxRating = Number(process.env.RATING_MAX) || 10
+    if (payload.rating <= maxRating) {
       return await Rating.create({
         userName: payload.username,
         rating: payload.rating,
         businessId: payload.business_id,
       })
     } else {
-      return 'rating cannot be more than 10'
+      return `rating cannot be more than ${maxRating}`
     }
   }
 
