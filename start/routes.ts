@@ -2,6 +2,7 @@ const AuthController = () => import('#controllers/auth_controller')
 const CategoriesController = () => import('#controllers/categories_controller')
 const BusinessDomainController = () => import('#controllers/business_domains_controller')
 const MenusController = () => import('#controllers/menus_controller')
+const RatingsController = () => import('#controllers/ratings_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 
@@ -60,3 +61,19 @@ router
       .use(middleware.auth())
   })
   .prefix('/menu')
+
+router
+  .group(() => {
+    router.get('/all', [RatingsController, 'findAllRatings'])
+    router
+      .get('/find/id/:id', [RatingsController, 'findRatingById'])
+      .where('id', router.matchers.uuid())
+    router
+      .get('/find/rating/:rating', [RatingsController, 'findRatingByRating'])
+      .where('rating', router.matchers.number())
+    router.post('/create', [RatingsController, 'removeRating'])
+    router
+      .delete('/remove/id/:id', [RatingsController, 'removeRating'])
+      .where('id', router.matchers.uuid())
+  })
+  .prefix('/rating')
