@@ -71,7 +71,7 @@ router
     router
       .get('/find/rating/:rating', [RatingsController, 'findRatingByRating'])
       .where('rating', router.matchers.number())
-    router.post('/create', [RatingsController, 'removeRating'])
+    router.post('/create', [RatingsController, 'createRating'])
     router
       .delete('/remove/id/:id', [RatingsController, 'removeRating'])
       .where('id', router.matchers.uuid())
