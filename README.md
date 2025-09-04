@@ -24,6 +24,7 @@ More Examples:
 | `fix` | perbaikan bug untuk pengguna, bukan perbaikan pada skrip build |
 | `change` | perbuhan kode bersifat global dan umum |
 | `docs` | penambahan dan perubahan dokumentasi |
+| `renewal` | memperbarui fungsi kode, mempengaruhi kode produksi |
 | `style` | pemformatan, titik koma hilang, dll; tidak ada perubahan kode produksi |
 | `refactor`| melakukan refaktor kode produksi, misalnya mengganti nama variabel |
 | `test` | menambahkan tes yang hilang, melakukan refaktor tes; tidak ada perubahan kode produksi |
