@@ -32,10 +32,12 @@ router
       })
       .prefix('/category')
 
-    router.group(() => {
-      router.get('/all', [CategoryMenusController, 'getAllCategoryMenu'])
-      router.post('/create', [CategoryMenusController, 'create'])
-    })
+    router
+      .group(() => {
+        router.get('/all', [CategoryMenusController, 'getAllCategoryMenu'])
+        router.post('/create', [CategoryMenusController, 'create'])
+      })
+      .prefix('category_menu')
 
     router
       .group(() => {
