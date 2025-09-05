@@ -3,12 +3,16 @@ import ImageService from './image_service.js'
 import Menu from '#models/menu'
 import { Infer } from '@vinejs/vine/types'
 import { createMenu } from '#validators/menu'
+import { CategoryMenuService } from './category_menu_service.js'
 
 type CreateMenu = Infer<typeof createMenu>
 
 @inject()
 export class MenuService {
-  constructor(protected imageService: ImageService) {}
+  constructor(
+    protected imageService: ImageService,
+    protected categoryMenuService: CategoryMenuService
+  ) {}
 
   public async findAll() {
     return await Menu.all()
@@ -20,6 +24,11 @@ export class MenuService {
 
   public async findByName(name: string) {
     return await Menu.findByOrFail('name', name)
+  }
+
+  public async findByCategory(category: string) {
+    const categoryId = await this.categoryMenuService.findByName(category)
+    return await Menu.find(categoryId)
   }
 
   public async create(payload: CreateMenu) {

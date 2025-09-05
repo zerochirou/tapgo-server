@@ -1,5 +1,6 @@
 const AuthController = () => import('#controllers/auth_controller')
 const CategoriesController = () => import('#controllers/categories_controller')
+const CategoryMenusController = () => import('#controllers/category_menus_controller')
 const BusinessDomainController = () => import('#controllers/business_domains_controller')
 const MenusController = () => import('#controllers/menus_controller')
 const RatingsController = () => import('#controllers/ratings_controller')
@@ -30,6 +31,11 @@ router
           .where('id', router.matchers.uuid())
       })
       .prefix('/category')
+
+    router.group(() => {
+      router.get('/all', [CategoryMenusController, 'getAllCategoryMenu'])
+      router.post('/create', [CategoryMenusController, 'create'])
+    })
 
     router
       .group(() => {

@@ -30,6 +30,17 @@ export default class MenusController {
     }
   }
 
+  public async getMenuByCategory({ response, request }: HttpContext) {
+    try {
+      const category: string = await request.param('id')
+      const menus = await this.menuService.findByCategory(category)
+      return response.ok(menus)
+    } catch (error) {
+      logger.error({ message: error })
+      return response.internalServerError('internal server error')
+    }
+  }
+
   public async getMenuByName({ response, request }: HttpContext) {
     try {
       const { name } = request.only(['name'])
