@@ -11,6 +11,9 @@ export default class Category extends BaseModel {
   @column({ columnName: 'category_name' })
   declare categoryName: string
 
+  @column({ columnName: 'emoji' })
+  declare emoji: string
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

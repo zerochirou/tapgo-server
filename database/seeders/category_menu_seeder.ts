@@ -4,10 +4,9 @@ import { BaseSeeder } from '@adonisjs/lucid/seeders'
 export default class extends BaseSeeder {
   async run() {
     await CategoriesMenu.createMany([
-      { categoryName: 'Food' },
-      { categoryName: 'Drink' },
-      { categoryName: 'Outfit' },
-      { categoryName: 'Natural Products' },
+      { categoryName: 'Minuman', emoji: '🍸' },
+      { categoryName: 'Makanan', emoji: '🍽️' },
+      { categoryName: 'Outfit', emoji: '👕' },
     ])
   }
 }

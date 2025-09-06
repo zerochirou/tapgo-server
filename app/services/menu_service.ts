@@ -26,9 +26,8 @@ export class MenuService {
     return await Menu.findByOrFail('name', name)
   }
 
-  public async findByCategory(category: string) {
-    const categoryId = await this.categoryMenuService.findByName(category)
-    return await Menu.findManyBy('category_id', categoryId.id)
+  public async findByCategory(id: string) {
+    return await Menu.findManyBy('category_id', id)
   }
 
   public async create(payload: CreateMenu) {

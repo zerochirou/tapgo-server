@@ -15,6 +15,7 @@ export class CategoryMenuService {
   public async create(payload: CreateCategoriesMenu) {
     return await CategoriesMenu.create({
       categoryName: payload.category_name,
+      emoji: payload.emoji,
     })
   }
 

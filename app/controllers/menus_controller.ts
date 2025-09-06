@@ -32,8 +32,8 @@ export default class MenusController {
 
   public async getMenuByCategory({ response, request }: HttpContext) {
     try {
-      const { category } = request.only(['category'])
-      const menus = await this.menuService.findByCategory(category)
+      const id = request.param('id')
+      const menus = await this.menuService.findByCategory(id)
       return response.ok(menus)
     } catch (error) {
       logger.error({ message: error })

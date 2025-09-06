@@ -18,6 +18,10 @@ export class BusinessDomainService {
     return await BusinessDomain.findByOrFail('id', id)
   }
 
+  public async findByCategory(id: string) {
+    return await BusinessDomain.findManyBy('category_id', id)
+  }
+
   public async create(payload: CreateBusinessDomain) {
     const { backgroundImageUrl, backgroundImageFileName } =
       await this.imageService.uploadBackgroundImage(payload.image_background)
