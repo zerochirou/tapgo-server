@@ -1,9 +1,14 @@
 import Category from '#models/category'
 import { createCategory } from '#validators/category'
 import { Infer } from '@vinejs/vine/types'
+import { AlgoliasearchService } from './algoliasearch_service.js'
+import { inject } from '@adonisjs/core'
 
 type CreateCategory = Infer<typeof createCategory>
+@inject()
 export class CategoryService {
+  constructor(protected algoliasearchService: AlgoliasearchService) {}
+
   public async findAll() {
     return await Category.all()
   }
@@ -40,5 +45,10 @@ export class CategoryService {
     }
 
     await categoryItem.delete()
+  }
+
+  public async sendDataToAlgolia() {
+    const data = await Category.all()
+    return await this.algoliasearchService.upload('category', data)
   }
 }

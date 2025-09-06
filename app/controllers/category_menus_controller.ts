@@ -28,4 +28,14 @@ export default class CategoryMenusController {
       return response.internalServerError('internal server error')
     }
   }
+
+  public async sendAlgolia({ response }: HttpContext) {
+    try {
+      await this.categoryMenuService.sendDataToAlgolia()
+      // your code here
+    } catch (error) {
+      logger.error({ message: error })
+      return response.internalServerError('internal server error')
+    }
+  }
 }

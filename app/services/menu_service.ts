@@ -4,6 +4,7 @@ import Menu from '#models/menu'
 import { Infer } from '@vinejs/vine/types'
 import { createMenu } from '#validators/menu'
 import { CategoryMenuService } from './category_menu_service.js'
+import { AlgoliasearchService } from './algoliasearch_service.js'
 
 type CreateMenu = Infer<typeof createMenu>
 
@@ -11,7 +12,8 @@ type CreateMenu = Infer<typeof createMenu>
 export class MenuService {
   constructor(
     protected imageService: ImageService,
-    protected categoryMenuService: CategoryMenuService
+    protected categoryMenuService: CategoryMenuService,
+    protected algoliasearchService: AlgoliasearchService
   ) {}
 
   public async findAll() {
@@ -69,5 +71,10 @@ export class MenuService {
     menuItem.imageUrl = menuImageUrl
 
     await menuItem.save()
+  }
+
+  public async sendDataToAlgolia() {
+    const data = await Menu.all()
+    return await this.algoliasearchService.upload('menus', data)
   }
 }

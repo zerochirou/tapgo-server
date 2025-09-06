@@ -73,4 +73,13 @@ export default class CategoriesController {
       return response.internalServerError('internal server error')
     }
   }
+
+  public async sendAlgolia({ response }: HttpContext) {
+    try {
+      await this.categoryService.sendDataToAlgolia()
+    } catch (error) {
+      logger.error({ message: error })
+      return response.internalServerError('internal server error')
+    }
+  }
 }

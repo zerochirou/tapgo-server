@@ -3,12 +3,16 @@ import { createBusinessDomain } from '#validators/business_domain'
 import { Infer } from '@vinejs/vine/types'
 import ImageService from './image_service.js'
 import { inject } from '@adonisjs/core'
+import { AlgoliasearchService } from './algoliasearch_service.js'
 
 type CreateBusinessDomain = Infer<typeof createBusinessDomain>
 
 @inject()
 export class BusinessDomainService {
-  constructor(protected imageService: ImageService) {}
+  constructor(
+    protected imageService: ImageService,
+    protected algoliasearchService: AlgoliasearchService
+  ) {}
 
   public async findAll() {
     return await BusinessDomain.all()
@@ -55,5 +59,10 @@ export class BusinessDomainService {
     await this.imageService.removeImage(businessIconUrl)
 
     await businessDomainItem.delete()
+  }
+
+  public async sendDataToAlgolia() {
+    const data = await BusinessDomain.all()
+    return await this.algoliasearchService.upload('business', data)
   }
 }

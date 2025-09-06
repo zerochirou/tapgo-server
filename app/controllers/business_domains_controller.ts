@@ -61,4 +61,13 @@ export default class BusinessDomainsController {
       return response.internalServerError('internal server error')
     }
   }
+
+  public async sendAlgolia({ response }: HttpContext) {
+    try {
+      await this.businessDomainService.sendDataToAlgolia()
+    } catch (error) {
+      logger.error({ message: error })
+      return response.internalServerError('internal server error')
+    }
+  }
 }

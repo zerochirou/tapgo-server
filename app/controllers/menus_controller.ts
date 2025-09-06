@@ -85,4 +85,14 @@ export default class MenusController {
       return response.internalServerError('internal server error')
     }
   }
+
+  public async sendAlgolia({ response }: HttpContext) {
+    try {
+      await this.menuService.sendDataToAlgolia()
+      // your code here
+    } catch (error) {
+      logger.error({ message: error })
+      return response.internalServerError('internal server error')
+    }
+  }
 }

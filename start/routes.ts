@@ -97,3 +97,12 @@ router
       .prefix('/rating')
   })
   .prefix('/api/v1')
+
+router
+  .group(() => {
+    router.post('/menus', [MenusController, 'sendAlgolia'])
+    router.post('/category_menu', [CategoryMenusController, 'sendAlgolia'])
+    router.post('/category', [CategoriesController, 'sendAlgolia'])
+    router.post('/business', [BusinessDomainController, 'sendAlgolia'])
+  })
+  .prefix('/vendor')
