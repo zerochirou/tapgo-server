@@ -5,12 +5,11 @@ import { Infer } from '@vinejs/vine/types'
 type CreateCategoriesMenu = Infer<typeof createCategoryMenu>
 export class CategoryMenuService {
   public async findAll() {
-    const categoriesMenu = await CategoriesMenu.all()
-    return categoriesMenu
+    return await CategoriesMenu.all()
   }
 
   public async findByName(name: string) {
-    return await CategoriesMenu.find(name)
+    return await CategoriesMenu.findByOrFail('category_name', name)
   }
 
   public async create(payload: CreateCategoriesMenu) {

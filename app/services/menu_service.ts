@@ -28,7 +28,7 @@ export class MenuService {
 
   public async findByCategory(category: string) {
     const categoryId = await this.categoryMenuService.findByName(category)
-    return await Menu.find(categoryId)
+    return await Menu.findManyBy('category_id', categoryId.id)
   }
 
   public async create(payload: CreateMenu) {
@@ -40,6 +40,7 @@ export class MenuService {
       businessId: payload.business_id,
       description: payload.description,
       price: payload.price,
+      categoryId: payload.category_id,
       imageUrl: menuImageUrl,
       imageRelativePath: menuImageFileName,
     })

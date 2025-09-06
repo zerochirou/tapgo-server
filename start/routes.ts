@@ -62,6 +62,7 @@ router
           .get('/find/id/:id', [MenusController, 'getMenuById'])
           .where('id', router.matchers.uuid())
         router.post('/find/name', [MenusController, 'getMenuByName'])
+        router.post('/find/category', [MenusController, 'getMenuByCategory'])
         router.post('/create', [MenusController, 'createMenu']).use(middleware.auth())
         router
           .put('/edit/id/:id', [MenusController, 'editMenu'])
