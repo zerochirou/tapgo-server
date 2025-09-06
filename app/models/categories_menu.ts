@@ -1,10 +1,10 @@
 import { DateTime } from 'luxon'
 import { BaseModel, beforeCreate, column, hasMany } from '@adonisjs/lucid/orm'
 import { v4 as uuidV4 } from 'uuid'
-import BusinessDomain from './business_domain.js'
+import Menu from './menu.js'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 
-export default class Category extends BaseModel {
+export default class CategoriesMenu extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
 
@@ -21,10 +21,10 @@ export default class Category extends BaseModel {
   declare updatedAt: DateTime
 
   @beforeCreate()
-  static assignUuid(category: Category) {
+  static assignUuid(category: CategoriesMenu) {
     category.id = uuidV4()
   }
 
-  @hasMany(() => BusinessDomain)
-  declare businessDomain: HasMany<typeof BusinessDomain>
+  @hasMany(() => Menu)
+  declare menu: HasMany<typeof Menu>
 }

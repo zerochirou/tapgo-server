@@ -12,6 +12,9 @@ export default class Menu extends BaseModel {
   @column({ columnName: 'business_id' })
   declare businessId: string
 
+  @column({ columnName: 'category_id' })
+  declare categoryId: string
+
   @column({ columnName: 'description' })
   declare description: string
 

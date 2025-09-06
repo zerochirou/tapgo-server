@@ -29,6 +29,17 @@ export default class BusinessDomainsController {
     }
   }
 
+  public async getBusinessDomainByCategory({ response, request }: HttpContext) {
+    try {
+      const id = await request.param('id')
+      const businessDomain = await this.businessDomainService.findByCategory(id)
+      response.ok(businessDomain)
+    } catch (error) {
+      logger.error({ message: error })
+      return response.internalServerError('internal server error')
+    }
+  }
+
   public async createBusinessDomain({ response, request }: HttpContext) {
     try {
       const payload = await request.validateUsing(createBusinessDomain)

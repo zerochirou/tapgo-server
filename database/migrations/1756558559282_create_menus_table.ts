@@ -13,6 +13,7 @@ export default class extends BaseSchema {
         .inTable('business_domains')
         .onDelete('CASCADE')
         .notNullable()
+      table.uuid('category_id').references('id').inTable('categories_menus').onDelete('CASCADE')
       table.string('description')
       table.decimal('price', 10, 2).notNullable()
       table.string('image_url').notNullable()

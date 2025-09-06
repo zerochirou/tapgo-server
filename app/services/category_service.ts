@@ -19,6 +19,7 @@ export class CategoryService {
   public async create(payload: CreateCategory) {
     return await Category.create({
       categoryName: payload.category_name,
+      emoji: payload.emoji,
     })
   }
 
