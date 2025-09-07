@@ -1,5 +1,6 @@
 const AuthController = () => import('#controllers/auth_controller')
 const CategoriesController = () => import('#controllers/categories_controller')
+const CategoryMenusController = () => import('#controllers/category_menus_controller')
 const BusinessDomainController = () => import('#controllers/business_domains_controller')
 const MenusController = () => import('#controllers/menus_controller')
 const RatingsController = () => import('#controllers/ratings_controller')
@@ -33,9 +34,19 @@ router
 
     router
       .group(() => {
+        router.get('/all', [CategoryMenusController, 'getAllCategoryMenu'])
+        router.post('/create', [CategoryMenusController, 'create'])
+      })
+      .prefix('category_menu')
+
+    router
+      .group(() => {
         router.get('/all', [BusinessDomainController, 'getAllBusinessDomain'])
         router
           .get('/find/id/:id', [BusinessDomainController, 'getBusinessDomainById'])
+          .where('id', router.matchers.uuid())
+        router
+          .get('/find/category/:id', [BusinessDomainController, 'getBusinessDomainByCategory'])
           .where('id', router.matchers.uuid())
         router
           .post('/create', [BusinessDomainController, 'createBusinessDomain'])
@@ -54,6 +65,9 @@ router
           .get('/find/id/:id', [MenusController, 'getMenuById'])
           .where('id', router.matchers.uuid())
         router.post('/find/name', [MenusController, 'getMenuByName'])
+        router
+          .get('/find/category/:id', [MenusController, 'getMenuByCategory'])
+          .where('id', router.matchers.uuid())
         router.post('/create', [MenusController, 'createMenu']).use(middleware.auth())
         router
           .put('/edit/id/:id', [MenusController, 'editMenu'])
